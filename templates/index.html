@@ -1,36 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/SULogo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Swift Undergrads is a team comprising of undergraduate students conducting mentorship programs for students appearing for MHT-CET entrance exam. It provides services such as notes, quizzes, doubt solving, admission procedure guidance and many more."/>
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/SULogo.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposure Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-black  items-center h-screen font-sans ">
+    <nav class="bg-black border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/14/Universit%C3%A9_d%27Avignon_%28logo_2018%29.svg/1200px-Universit%C3%A9_d%27Avignon_%28logo_2018%29.svg.png" class="h-14 rounded" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white"></span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700">
+                    <li>
+                        <a href="/" class="block py-2 px-3 text-white  rounded md:bg-transparent md:p-0 dark:text-white" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+                    </li>
+                    <li>
+                        <a href="/references" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Referances</a>
+                    </li>
+                    <li>
+                        <a href="/effects" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Effects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/responsive.css' %}">
+  
+      <div style="background-image: url('https://i0.wp.com/backgroundabstract.com/wp-content/uploads/edd/2023/07/520_Mesa-de-trabajo-1.jpg?zoom=2&resize=1000%2C750&ssl=1'); background-size: cover; background-position: center;" class="mt-10 bg-gray-900 p-10 rounded-lg shadow-lg animate-fadeIn flex flex-col items-center justify-center">
+        <h2 class="text-center text-2xl mb-6 text-blue-500">Exposure Prediction</h2>
+        <form action="/predict" method="post" class="flex flex-wrap gap-4 justify-center w-full max-w-4xl">
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="species" class="font-bold mb-2 block text-gray-300">Species:</label>
+                <select id="species" name="species" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="Mus musculus">Mus musculus</option>
+                    <option value="Arabidopsis thaliana">Arabidopsis thaliana</option>
+                    <option value="Homo sapiens">Homo sapiens</option>
+                    <option value="Escherichia coli">Escherichia coli</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="organism" class="font-bold mb-2 block text-gray-300">Organism:</label>
+                <select id="organism" name="organism" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="Human">Human</option>
+                    <option value="Animal">Animal</option>
+                    <option value="Plant">Plant</option>
+                    <option value="Microorganism">Microorganism  </option>
+               
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="uv" class="font-bold mb-2 block text-gray-300">UV:</label>
+                <select id="uv" name="uv" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="UV-A">UV-A</option>
+                    <option value="UV-B">UV-B</option>
+                    <option value="UV-C">UV-C</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="intensity" class="font-bold mb-2 block text-gray-300">Exposure Int:(KJ,KW,W,J)</label>
+                    <input type="text" id="intensity" name="intensity" required class="w-full p-2 border border-gray-300 rounded">
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="time" class="font-bold mb-2 block text-gray-300">Exposure Time (in seconds):</label>
+                <input type="number" id="time" name="time" required class="w-full p-2 border border-gray-300 rounded">
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="organelle" class="font-bold mb-2 block text-gray-300">Organalle:</label>
+                <select id="organelle" name="organelle" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="lysosome">lysosome </option>
+                    <option value="cytoplasm">cytoplasm  </option>
+                    <option value="golgi">golgi     </option>
+                    <option value="cell wall">cell wall</option>
+                    <option value="membrane">membrane</option>
+                    <option value="mitochondrion">mitochondrion</option>
+                    <option value="proxisome">proxisome</option>
+                    <option value="nucleus">nucleus</option>
+                    <option value="chloroplast">chloroplast</option>
+                    <option value="ribosome">ribosome</option>
+                    <option value="endoplasmic">endoplasmic</option>
+                    <option value="reticulum">reticulum</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="metabolites" class="font-bold mb-2 block text-gray-300">Metabolites Names:</label>
+                <select id="metabolites" name="metabolites" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="Nicotinamide Adenine Dinucleotide">Nicotinamide Adenine Dinucleotide
+                    </option>
+                    <option value="Glucose">Glucose
+                    </option>
+                    <option value="Citric Acid">Citric Acid 
+                    </option>
+                    <option value="Fructose">Fructose
+                    </option>
+                    <option value="Pyruvate">Pyruvate
+                    </option>
+                    <option value="Acetyl-CoA">Acetyl-CoA
+                    </option>
+                    <option value="Adenosine Triphosphate">Adenosine Triphosphate
+                    </option>
+                    <option value="Lactic Acid">Lactic Acid</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="proteins" class="font-bold mb-2 block text-gray-300">Proteins Names:</label>
+                <select id="proteins" name="proteins" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="Myosin">Myosin
+
+                    </option>
+                    <option value="Cytochrome C">Cytochrome C
+
+                    </option>
+                    <option value="Keratin">Keratin
+
+                    </option>
+                    <option value="Collagen">Collagen
+
+                    </option>
+                    <option value="Insulin">Insulin
+
+                    </option>
+                    <option value="Hemoglobin">Hemoglobin
+
+                    </option>
+                    <option value="Tubulin">Tubulin
+
+                    </option>
+                    <option value="Albumin">Albumin</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="genes" class="font-bold mb-2 block text-gray-300">Genes Names:</label>
+                <select id="genes" name="genes" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="EGFR">EGFR
+
+                    </option>
+                    <option value="BRCA1">BRCA1
+
+                    </option>
+                    <option value="APOE">APOE
+
+                    </option>
+                    <option value="KRAS">KRAS
+
+                    </option>
+                    <option value="TP53">TP53
+
+                    </option>
+                    <option value="MTOR">MTOR
+
+                    </option>
+                    <option value="VEGFA">VEGFA
+
+                    </option>
+                    <option value="BRAF">BRAF</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/4">
+                <label for="tissue" class="font-bold mb-2 block text-gray-300">Studied Tissue:</label>
+                <select id="tissue" name="tissue" required class="w-full p-2 border border-gray-300 rounded">
+                    <option value="skin">skin
+
+                    </option>
+                    <option value="cell">cell
+
+                    </option>
+                    <option value="whole body">whole body
+
+                    </option>
+                    <option value="plant">plant
+
+                    </option>
+                    <option value="Pyruvate">Pyruvate
+                    </option>
+                    <option value="seed">seed
+
+                    </option>
+                    <option value="tear">tear
+                    </option>
+                </select>
+            </div>
+            <div class="w-full flex justify-center mt-4">
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300">Predict</button>
+            </div>
+        </form>
+        
+        <h3 class="text-center text-xl mt-6 text-gray-300">Predictions:</h3>
+        <p class="text-center text-gray-300"><strong>Exposure Severity:</strong> {{ severity_prediction }}</p>
+        <p class="text-center text-gray-300"><strong>Biological Response:</strong> {{ response_prediction }}</p>
+    </div>
     
-    <title> {% block title %}{% endblock title %} UV Rays</title>
+</body>
 
-  </head>
-  <body>
-
-  <div>
-        <div>
-
-      <div class="margin">{% block body %}{% endblock body %}</div>
-    </body>
 </html>

@@ -1,49 +1,51 @@
 from django.shortcuts import render
 import numpy as np
-from tensorflow.keras.models import load_model
+import joblib
 
-model = load_model('./savedModels/Responses Model.h5', compile=False)
+model_response = joblib.load('./savedModels/response.pkl')
+model_severity = joblib.load('./savedModels/severity.pkl')
 
-# Define class labels
-class_labels = ['DNA damage', 'DNA repair', 'pathways', 'epigenetic', 'epigenetic']
+def about(request):
+    return render(request, 'about.html')
+
+def effects(request):
+    return render(request, 'effects.html')
+
+def references(request):
+    return render(request, 'references.html')
+
 
 def index(request):
     if request.method == 'POST':
         try:
             # Retrieve and convert inputs
-            species = float(request.POST.get('species', '0'))
-            organism = float(request.POST.get('organism', '0'))
-            uv_type = float(request.POST.get('uv_type', '0'))
-            exposure_intensity = float(request.POST.get('exposure_intensity', '0'))
-            exposure_time = float(request.POST.get('exposure_time', '0'))
-            organelle = float(request.POST.get('organelle', '0'))
-            metabolites = float(request.POST.get('metabolites', '0'))
-            proteins = float(request.POST.get('proteins', '0'))
-            genes = float(request.POST.get('genes', '0'))
-            studied_tissue = float(request.POST.get('studied_tissue', '0'))
+            species = request.POST.get('species', '0')
+            organism = request.POST.get('organism', '0')
+            uv_type = request.POST.get('uv_type', '0')
+            exposure_intensity = request.POST.get('exposure_intensity', '0')
+            exposure_time = request.POST.get('exposure_time', '0')
+            organelle = request.POST.get('organelle', '0')
+            metabolites = request.POST.get('metabolites', '0')
+            proteins = request.POST.get('proteins', '0')
+            genes = request.POST.get('genes', '0')
+            studied_tissue = request.POST.get('studied_tissue', '0')
 
             # Create input array
-            input_data = np.array([[species, organism, uv_type, exposure_intensity, exposure_time, organelle, metabolites, proteins, genes, studied_tissue]])
+            # Convert features to DataFrame
+            final_features = pd.DataFrame(features)
 
-             # Make prediction
-            y_pred = model.predict(input_data)
+            # Make predictions
+            severity_prediction = model_severity.predict(final_features)
+            response_prediction = model_response.predict(final_features)
 
-            # Interpret prediction result
-            if y_pred[0][0] == 0:
-                y_pred = 'Signaling'
-            elif y_pred[0][0] == 1:
-                y_pred = 'Epigenetic'
-            elif y_pred[0][0] == 2:
-                y_pred = 'DNA Repair'
-            elif y_pred[0][0] == 3:
-                y_pred = 'Pathways'
-            else:
-                y_pred = 'DNA Damage'
+            return render_template('index.html', 
+                                severity_prediction=severity_prediction[0],
+                                response_prediction=response_prediction[0])
 
             return render(request, 'home.html', {'result': y_pred})
 
         except ValueError as e:
             # Handle the case where input conversion fails
-            return render(request, 'home.html', {'error': f'Invalid input data: {e}'})
+            return render(request, 'index.html', {'error': f'Invalid input data: {e}'})
     
-    return render(request, 'home.html')
+    return render(request, 'index.html')

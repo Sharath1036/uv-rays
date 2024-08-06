@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black">
+  <nav class="bg-black border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/14/Universit%C3%A9_d%27Avignon_%28logo_2018%29.svg/1200px-Universit%C3%A9_d%27Avignon_%28logo_2018%29.svg.png" class="h-14 rounded" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white"></span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700">
+                <li>
+                    <a href="/" class="block py-2 px-3 text-white rounded md:bg-transparent  md:p-0 dark:text-white" aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="/about" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+                </li>
+                <li>
+                    <a href="/references" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Referances</a>
+                </li>
+                <li>
+                    <a href="/effects" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Effects</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <main class="bg-black container mx-auto px-4 py-8 lg:px-20">
+        <section class="flex flex-col lg:flex-row lg:space-x-16 items-center">
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+            <Fade triggerOnce={true}>
+                <img
+                    src="https://media.istockphoto.com/id/1481281979/photo/digital-sun-rays-light-rendering-isolated-on-the-black-background-for-overlay-design-or.webp?b=1&s=170667a&w=0&k=20&c=yVYElBoJI2EYh_Y71siIbWbdghHeuV4iMeqBRm2OZ4o="
+                    alt="Cloud Security Image"
+                    class="rounded-lg shadow-md"
+                />
+            </Fade>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <Slide direction="right" triggerOnce={true}>
+                <h2 class="text-2xl lg:text-3xl font-bold mb-4 text-gray-300">Harmful Rays:
+                </h2>
+                <p class="text-gray-300 leading-relaxed">
+                <span class="font-bold">	•	DNA Damage:</span><br/>
+	•	Impact: UV radiation can damage DNA, causing mutations and potentially leading to skin cancer.
+	•	Cure: The body has mechanisms to repair DNA, removing and replacing the damaged sections.
+	<span class="font-bold">•	DNA Repair Pathways:</span><br/>
+	•	Impact: Too much UV radiation can overwhelm the body’s repair systems, leaving DNA damage unrepaired.
+	•	Cure: Medicines or gene therapy can help boost the body’s natural repair processes.
+	<span class="font-bold">•	Epigenetic:</span><br/>
+	•	Impact: UV radiation can change how genes are expressed, which can lead to cancer.
+	•	Cure: Treatments can reverse these changes to restore normal gene function.<br/>
+	<span class="font-bold">•	Signaling:</span><br/>
+	•	Impact: UV radiation can mess up cell communication, leading to uncontrolled cell growth.
+	•	Cure: Targeted treatments can correct these signaling issues to help control cell growth.
+
+                </p>
+                </Slide>
+            </div>
+        </section>
+
+        <section class="mt-8 lg:mt-12 flex flex-col lg:flex-row lg:space-x-16 items-center">
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+                <Fade triggerOnce={true} >
+                <img
+                    src="https://media.istockphoto.com/id/1470973831/photo/blue-sky-background-with-clouds-and-sun-rays-coming-out.webp?b=1&s=170667a&w=0&k=20&c=cBX5zs3fo_r-XbaQBvcz5HreRlJDFo82mA2pZnP1y0k="
+                    alt="Cloud Compliance Image"
+                    class="rounded-lg shadow-md"
+                />
+                </Fade>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <Slide direction="right" triggerOnce={true}>
+                <h2 class="text-2xl lg:text-3xl font-bold mb-4 text-gray-300">
+                    Hermetic Rays:
+
+                </h2>
+                <p class="text-gray-300 leading-relaxed">
+                   <span class="font-bold">•	DNA Damage:</span><br/>
+                    •	Impact: Small amounts of UV radiation can cause minor DNA damage, which can trigger protective responses in the body.<br/>
+                    •	Cure: The body responds by increasing DNA repair activities.
+                    <span class="font-bold">•	DNA Repair Pathways:</span><br/>
+                    •	Impact: Controlled UV exposure can strengthen the body’s DNA repair systems.
+                    •	Cure: Controlled UV exposure or treatments can prepare the body’s repair systems to handle damage better.<br/>
+                   <span class="font-bold">•	Epigenetic:</span><br/>
+                    •	Impact: Mild UV radiation can positively affect gene expression, helping cells respond to stress.
+                    •	Cure: Controlled exposure or treatments can enhance these protective gene responses.<br/>
+                    <span class="font-bold">•	Signaling:</span><br/>
+                    •	Impact: Controlled UV exposure can activate beneficial cell signaling pathways, improving cell survival and repair.
+                    •	Cure: Controlled UV exposure or medicines can boost these protective signaling pathways.<br/>
+                </p>
+                </Slide>
+            </div>
+        </section>
+</body>
+</html>
